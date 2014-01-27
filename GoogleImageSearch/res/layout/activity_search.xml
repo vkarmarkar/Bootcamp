@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SearchActivity" >
+
+    <EditText
+        android:id="@+id/etSearchBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imgSearch"
+        android:ems="10"
+        android:hint="@string/search_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/imgSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etSearchBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/etSearchBox"
+        android:contentDescription="@string/search_button"
+        android:src="@android:drawable/ic_search_category_default" />
+
+    <GridView
+        android:id="@+id/gvImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etSearchBox"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:numColumns="3" >
+    </GridView>
+
+</RelativeLayout>
