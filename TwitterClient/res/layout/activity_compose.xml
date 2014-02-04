@@ -20,6 +20,7 @@
     <Button
         android:id="@+id/btTweet"
         android:onClick="postTweet"
+        android:background="@drawable/blue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btCancel"
@@ -38,9 +39,18 @@
         android:hint="@string/tweet"
         android:gravity="top|left"
         android:scrollHorizontally="false"
+        android:maxLength="140"
         android:inputType="textMultiLine" >
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/tvCharLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btCancel"
+        android:layout_centerHorizontal="true"
+        android:text="140" />
 
 </RelativeLayout>

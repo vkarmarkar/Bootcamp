@@ -93,7 +93,7 @@ public class Tweet extends BaseModel {
 	}
 
 	public static long findLowestId(ArrayList<Tweet> tweets) {
-		long id = 999999999;
+		long id = Long.MAX_VALUE;
 		for (Tweet tweet : tweets) {
 			if (tweet.getId() < id) {
 				id = tweet.getId();
