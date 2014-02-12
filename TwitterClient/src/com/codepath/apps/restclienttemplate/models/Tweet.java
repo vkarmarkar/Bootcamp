@@ -12,14 +12,14 @@ import com.activeandroid.annotation.Table;
 @Table(name = "Tweets")
 public class Tweet extends BaseModel {
 	private User user;
-	private long id;
+	private long tid;
 
 	public User getUser() {
 		return user;
 	}
 
-	public long getId() {
-		return id;
+	public long getTid() {
+		return tid;
 	}
 
 	// Define database columns and associated fields
@@ -55,7 +55,7 @@ public class Tweet extends BaseModel {
 		try {
 			tweet.jsonObject = jsonObject;
 			tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
-			tweet.id = jsonObject.getLong("id");
+			tweet.tid = jsonObject.getLong("id");
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
@@ -78,6 +78,7 @@ public class Tweet extends BaseModel {
 			Tweet tweet = fromJson(tweetJson);
 			if (tweet != null) {
 				tweets.add(tweet);
+				tweet.save();
 			}
 		}
 
@@ -95,8 +96,8 @@ public class Tweet extends BaseModel {
 	public static long findLowestId(ArrayList<Tweet> tweets) {
 		long id = Long.MAX_VALUE;
 		for (Tweet tweet : tweets) {
-			if (tweet.getId() < id) {
-				id = tweet.getId();
+			if (tweet.getTid() < id) {
+				id = tweet.getTid();
 			}
 		}
 		return id;

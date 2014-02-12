@@ -3,9 +3,11 @@ package com.codepath.apps.restclienttemplate;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetAdapter extends ArrayAdapter<Tweet> {
+	private Tweet tweet;
 
 	public TweetAdapter(Context context, List<Tweet> objects) {
 		super(context, 0, objects);
@@ -29,11 +32,22 @@ public class TweetAdapter extends ArrayAdapter<Tweet> {
 			view = inflater.inflate(R.layout.tweet_item, null);
 		}
 
-		Tweet tweet = getItem(position);
+		tweet = getItem(position);
 
 		ImageView imageView = (ImageView) view.findViewById(R.id.ivProfile);
 		ImageLoader.getInstance().displayImage(
 				tweet.getUser().getProfileImageUrl(), imageView);
+		imageView.setClickable(true);
+		imageView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				Intent i = new Intent(view.getContext(), ProfileActivity.class);
+				i.putExtra("screen_name", tweet.getUser().getScreenName());
+				i.putExtra("user_id", tweet.getUser().getTid());
+				view.getContext().startActivity(i);
+			}
+		});
 
 		TextView nameView = (TextView) view.findViewById(R.id.tvName);
 		String formattedName = "<b>" + tweet.getUser().getName() + "</b>"

@@ -3,7 +3,9 @@ package com.codepath.apps.restclienttemplate.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BaseModel {
+import com.activeandroid.Model;
+
+public class BaseModel extends Model {
 	
 	protected JSONObject jsonObject;
 	
